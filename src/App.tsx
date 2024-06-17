@@ -12,7 +12,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/player/:slug' element={<PlayVideo />} />
       </Routes>
-      <MenuBar />
+      {/* <MenuBar /> */}
     </>
   )
 }
