@@ -41,16 +41,13 @@ export default function MenuBar() {
         <div className="bg-[#fff] w-full absolute bottom-0">
             <div className="max-w-[500px] mx-auto px-3 py-[23px]">
                 <div className="flex justify-between ">
-                    {menuBarData.map((menu) => (
-                        <div className={`${menuIsActive.activeId === menu.id && "w-[82px] h-[82px] bg-[#00425A] flex justify-center items-center rounded-[50%] absolute"}`}>
-                            <button key={menu.id} onClick={() => setmenuIsActive({ activeId: menu.id })}>
-                                <img src={menu.icon} alt="" className="" />
-                            </button>
-                        </div>
-                    ))}
+                    
                 </div>
                 
             </div>
         </div>
     )
 }
+
+
+// https://83.69.139.250:55555/

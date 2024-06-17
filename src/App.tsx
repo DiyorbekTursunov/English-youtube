@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import Home from './pages/home'
 // import MenuBar from './components/ui_elements/menu_bar'
 import PlayVideo from './pages/play_video'
+import MenuBar from './components/ui_elements/menu_bar'
 
 function App() {
 
@@ -11,7 +12,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/player/:slug' element={<PlayVideo />} />
       </Routes>
-      {/* <MenuBar /> */}
+      <MenuBar />
     </>
   )
 }

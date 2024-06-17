@@ -1,12 +1,14 @@
 import { Dispatch, SetStateAction, useState } from "react"
+import { VideoType } from "../../../../lib/types/video_type"
 
 interface MenuBarBottomProps {
     menuBarMenuIsOpen: boolean
     setMenuBarMenuIsOpen: Dispatch<SetStateAction<boolean>>
+    videoData: VideoType | null
 }
 
 
-export default function MenuBarBottom({ menuBarMenuIsOpen, setMenuBarMenuIsOpen }: MenuBarBottomProps) {
+export default function MenuBarBottom({ menuBarMenuIsOpen, setMenuBarMenuIsOpen, videoData }: MenuBarBottomProps) {
     const [readMoreIsOpen, setreadMoreIsOpen] = useState(false)
     const forTestText = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium ab minus dolorum, ducimus accusamus at porro facere? Beatae, aliquam est, facere similique amet dolorum sapiente culpa molestias excepturi debitis, dolor repellat esse nobis laudantium adipisci aliquid dignissimos? Labore, aliquid aliquam inventore ipsum ut quo ab eaque deleniti placeat commodi soluta explicabo, debitis consequuntur expedita numquam eveniet fugiat voluptatum magni, dignissimos ex voluptas quod officiis distinctio totam! Eum voluptate quidem inventore fugiat consequuntur est odit saepe harum doloremque commodi aut illo, sunt nobis modi, culpa blanditiis sapiente debitis iure atque sequi exercitationem voluptas. Eligendi asperiores ut perspiciatis, facilis ab nihil quibusdam."
     // Use menuBarMenuIsOpen and setMenuBarMenuIsOpen here
@@ -22,7 +24,7 @@ export default function MenuBarBottom({ menuBarMenuIsOpen, setMenuBarMenuIsOpen 
                     <hr className="h-[2px] bg-black mt-3 w-[50px] mx-auto" />
                     <div className="pt-[15px] px-3">
                         <div className="flex justify-between">
-                            <h1 className="text-[18px] font-bold">Tom and jerry</h1>
+                            <h1 className="text-[18px] font-bold">{videoData?.title}</h1>
                             <button onClick={() => toggleMenuBarMenu()}>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="28px" height="28px"><path d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z" /></svg>
                             </button>
@@ -30,7 +32,7 @@ export default function MenuBarBottom({ menuBarMenuIsOpen, setMenuBarMenuIsOpen 
                         <hr className="h-[1px] bg-[#9c9c9ca6] mt-5" />
                     </div>
                     <div className={`px-3 mt-[20px] ${readMoreIsOpen && "h-full overflow-scroll"}`}>
-                        <ul className="flex justify-evenly mt-[20px]">ip
+                        <ul className="flex justify-evenly mt-[20px]">
                             <li className="flex flex-col items-center">
                                 <span className="text-[18px] font-bold">100k</span>
                                 <span className="text-[14px] text-[#595959]">Likes</span>
