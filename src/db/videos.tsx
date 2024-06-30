@@ -1,5 +1,5 @@
 import tom_i_jerry from '../components/images/thumnails/tom_i_jerry.jpg';
-import { VideoType } from "../../lib/types/video_type";
+import { VideoType } from "../lib/types/video_type";
 
 // Generate IDs outside the array definition
 

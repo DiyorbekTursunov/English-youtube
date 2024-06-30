@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { VideoType } from '../../../lib/types/video_type';
+import { VideoType } from '../../lib/types/video_type';
 
 interface YouTubePlayerProps {
   videoData: VideoType | null;

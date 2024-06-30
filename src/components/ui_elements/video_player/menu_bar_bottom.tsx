@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useState } from "react"
-import { VideoType } from "../../../../lib/types/video_type"
+import { VideoType } from "../../../lib/types/video_type"
 
 interface MenuBarBottomProps {
     menuBarMenuIsOpen: boolean
