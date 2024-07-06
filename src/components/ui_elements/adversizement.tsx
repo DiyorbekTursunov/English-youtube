@@ -3,7 +3,7 @@ import luca_logo from '../images/ad/luca_logo.png'
 
 export default function Adversizement() {
     return (
-        <div className="bg-[#00425A] max-w-[383px] mx-auto rounded-[25px] relative mt-[66px] ad_container mb-[24px]">
+        <div className="bg-[#00425A] max-w-[383px] mx-auto rounded-[25px] relative mt-[90px] pl-3 ad_container mb-[24px]">
             <img src={ad_img} alt="ad img" className='ad_banner absolute right-[24px] bottom-0 w-[194px]' />
 
             <div className=''>
