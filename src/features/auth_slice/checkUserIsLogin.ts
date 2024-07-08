@@ -11,7 +11,7 @@ interface CheckUserState {
 
 const initialState: CheckUserState = {
     videos: [],
-    loading: false,
+    loading: true,
     error: null,
 };
 
@@ -19,6 +19,7 @@ interface PostCheckUserTokenResponse {
     verification: string;
 }
 
+// Async thunk to handle user token check
 export const postCheckUserToken = createAsyncThunk<
     PostCheckUserTokenResponse,
     { navigate: NavigateFunction },
@@ -30,13 +31,9 @@ export const postCheckUserToken = createAsyncThunk<
     async ({ navigate }, { rejectWithValue }) => {
         try {
             const verification = localStorage.getItem('verification') as string;
-            if (!verification) {
-                throw new Error('No verification token found');
-            }
-
             const token = JSON.parse(verification);
-            const response = await baseUrlAxios.post('/auth/cheack', { verification: token });
-            console.log(response); // Log the response object
+
+            const response = await baseUrlAxios.post('/auth/check', { verification: token });
 
             if (response.status === 200) {
                 localStorage.setItem('verification', JSON.stringify(response.data.user.verification));
@@ -45,14 +42,17 @@ export const postCheckUserToken = createAsyncThunk<
                 localStorage.removeItem('verification');
                 throw new Error('Failed to verify user');
             }
-        } catch (error) {
+
+        } catch (error: unknown) {
+            console.log(error);
             localStorage.removeItem('verification');
-            navigate('/login'); // Navigate to register page on error
+            navigate('/register');
             return rejectWithValue('An error occurred while verifying the user');
         }
     }
 );
 
+// Slice to handle user state
 const checkUserIsLogin = createSlice({
     name: 'checkUser',
     initialState,

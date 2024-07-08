@@ -18,7 +18,7 @@ interface menuBarDataType {
 
 
 export default function MenuBar() {
-    const [menuIsActive, setmenuIsActive] = useState<menuIsActiveType>({ activeId: "1" })
+    const [menuIsActive, setmenuIsActive] = useState<menuIsActiveType>({ activeId: "0" })
     const navigate = useNavigate()
 
 

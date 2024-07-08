@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import VideoCard from './video-card'
 import { VideoType } from '../../lib/types/video_type'
 // import { videosData } from '../../db/videos'
@@ -11,14 +10,9 @@ interface VideoPropsType {
 export default function Videos({ allVideos }: VideoPropsType) {
 
 
-
     return (
         <div className='mb-[24px]'>
-            <div className='flex justify-between mb-[14px]'>
-                <h2 className='text-[20px] font-semibold'>Mashhur</h2>
-                <Link to={"/"} className='text-[18px] font-semibold opacity-50'>Barchasi</Link>
-            </div>
-            <div className='flex gap-4 overflow-y-auto'>
+            <div className='flex flex-col gap-y-[20px]'>
                 {allVideos && allVideos.map(video => (
                     <VideoCard video={video} key={video._id} />
                 ))}

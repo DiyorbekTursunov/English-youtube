@@ -24,7 +24,7 @@ export default function MenuBarBottom({ menuBarMenuIsOpen, setMenuBarMenuIsOpen,
                     <hr className="h-[2px] bg-black mt-3 w-[50px] mx-auto" />
                     <div className="pt-[15px] px-3">
                         <div className="flex justify-between">
-                            <h1 className="text-[18px] font-bold">{videoData?.title}</h1>
+                            <h1 className="text-[18px] font-bold">{videoData?.video_name}</h1>
                             <button onClick={() => toggleMenuBarMenu()}>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="28px" height="28px"><path d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z" /></svg>
                             </button>

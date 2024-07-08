@@ -9,5 +9,6 @@ export interface VideoType {
     video_clicked_count: string;
     video_rec_controller: string;
     video_type: string;
+    updatedAt: string;
     __v: number;
 }
