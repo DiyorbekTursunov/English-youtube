@@ -45,11 +45,11 @@ const YouTubePlayer = ({ videoData }: YouTubePlayerProps) => {
           <iframe
             className="w-full h-[290px] -mt-0"
             id="video_player"
-            src={videoUrl}
+            src={`${videoUrl}?playsinline=1&iv_load_policy=3&rel=0&showinfo=0&controls=1&fs=0&autoplay=1&enablejsapi=1&widgetid=1`}
             title="YouTube video player"
             frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
+            autoSave='true'
           ></iframe>
         )
       )}

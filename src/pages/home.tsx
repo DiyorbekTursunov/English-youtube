@@ -15,8 +15,11 @@ export default function Home() {
     const [allVideos, setAllVideos] = useState<VideoType[]>([]);
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
+    const [loading, setloading] = useState(true)
 
-    const { loading } = useSelector((state: RootState) => state.checkUser);
+    console.log(allVideos);
+
+    useSelector((state: RootState) => state.checkUser);
 
     useEffect(() => {
         // Fetch all videos
@@ -29,15 +32,13 @@ export default function Home() {
             } catch (error) {
                 console.error("Error fetching videos", error);
             }
+            setloading(false)
         };
         getAllVideosFun();
 
         // Dispatch the user token verification thunk
         const verifyToken = async () => {
-            const a = await dispatch(postCheckUserToken({ navigate })).unwrap();
-
-            console.log(a);
-
+            await dispatch(postCheckUserToken({ navigate })).unwrap();
         }
 
         verifyToken()
@@ -51,7 +52,7 @@ export default function Home() {
                     <Loader />
                 ) : (
                     <div className="w-full h-full bg-[#F0EEED]">
-                        <div className='max-w-[500px] mx-auto px-3'>
+                        <div className='max-w-[500px] mx-auto px-3 pb-20'>
                             <Navbar />
                             <Adversizement />
                             <Videos allVideos={allVideos} />

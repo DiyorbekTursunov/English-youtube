@@ -1,3 +1,4 @@
+import { baseUrlAxios } from "@/axiosConfig";
 import axios from "axios";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -33,7 +34,7 @@ export default function Login() {
         try {
             const { username, password } = userCredentials;
 
-            const userData = await axios.post("http://localhost:3000/auth/login", { username, password, })
+            const userData = await baseUrlAxios.post("/auth/login", { username, password, })
 
             if (userData.status === 201) {
                 localStorage.setItem("verification", JSON.stringify(userData.data.user.verification))

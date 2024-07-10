@@ -1,3 +1,4 @@
+import { baseUrlAxios } from "@/axiosConfig";
 import axios from "axios";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -59,7 +60,7 @@ export default function Register() {
         try {
             const { username, lastname, password } = userRegistration;
 
-            const userData = await axios.post("http://localhost:3000/auth/register", { username, lastname, password, })
+            const userData = await baseUrlAxios.post("/auth/register", { username, lastname, password, })
 
             if (userData.status === 201) {
                 localStorage.setItem("verification", JSON.stringify(userData.data.user.verification))

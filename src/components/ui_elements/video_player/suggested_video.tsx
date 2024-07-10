@@ -9,7 +9,7 @@ interface SuggestedVideoProps {
 export default function SuggestedVideo({ AllvideoData }: SuggestedVideoProps) {
   const navigate = useNavigate()
   console.log(AllvideoData);
-
+  
   return (
     <div className="h-full overflow-scroll">
       <div className="flex flex-col gap-[25px] px-3 mt-[30px]">
