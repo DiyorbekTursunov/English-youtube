@@ -7,13 +7,13 @@ import { VideoType } from '@/lib/types/video_type';
 import VideoCard from '../ui_elements/video-card';
 
 
-interface LastViewedProps {
-  lastViewedVideosDataAll: VideoType[] | undefined
+interface likedVideosProps {
+  likedVideos: VideoType[] | undefined
 }
 
-export default function LastViewed({ lastViewedVideosDataAll }: LastViewedProps) {
+export default function LikedVideos({ likedVideos }: likedVideosProps) {
 
-  console.log(lastViewedVideosDataAll);
+  console.log(likedVideos);
 
 
 
@@ -29,7 +29,7 @@ export default function LastViewed({ lastViewedVideosDataAll }: LastViewedProps)
       >
         <div className='mb-[24px]'>
           <div className='flex flex-col gap-y-[20px]'>
-            {lastViewedVideosDataAll?.length ? lastViewedVideosDataAll.map(video => (
+            {likedVideos?.length ? likedVideos.map(video => (
               <SwiperSlide key={video._id}>
                 <VideoCard video={video} key={video._id} />
               </SwiperSlide>

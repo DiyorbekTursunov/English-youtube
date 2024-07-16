@@ -16,7 +16,7 @@ const initialState: CheckUserState = {
     password: "",
     verification: "",
     role: "",
-    _id:""
+    _id: ""
   },
   loading: true,
   error: null,
@@ -42,6 +42,7 @@ export const postCheckUserToken = createAsyncThunk<
       const token = JSON.parse(verification);
 
       const response = await baseUrlAxios.post('/auth/check', { verification: token });
+      console.log(response);
 
       if (response.status === 200) {
         localStorage.setItem('verification', JSON.stringify(response.data.user.verification));
@@ -75,7 +76,7 @@ const checkUserIsLogin = createSlice({
         state.error = null; // Reset error state on pending
       })
       .addCase(postCheckUserToken.fulfilled, (state, action) => {
-        state.loading = false;        
+        state.loading = false;
         state.userData = action.payload.user; // Update the userData with the received user data
       })
       .addCase(postCheckUserToken.rejected, (state, action) => {

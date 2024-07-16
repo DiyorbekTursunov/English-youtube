@@ -1,4 +1,6 @@
 export interface VideoType {
+    liked_videos_user_id: [{ _id: string }]
+    recently_viewed_videos_user_id: [{ _id: string }]
     _id: string;
     video_youtube_id: string;
     video_img_url: string;

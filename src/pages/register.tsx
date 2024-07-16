@@ -89,7 +89,7 @@ export default function Register() {
                             <label htmlFor="username" hidden></label>
                             <input
                                 className="focus:outline-[#1F41BB] rounded-[10px] bg-[#F1F4FF] p-[20px] placeholder:text-[#626262] w-full"
-                                autoComplete="transaction-amount"
+                                autoComplete="username"
                                 id="username"
                                 name="username"
                                 type="text"
@@ -104,6 +104,7 @@ export default function Register() {
                             <input
                                 className="focus:outline-[#1F41BB] rounded-[10px] bg-[#F1F4FF] p-[20px] placeholder:text-[#626262] w-full"
                                 id="lastname"
+                                autoComplete="username"
                                 name="lastname"
                                 type="text"
                                 placeholder="Familiyangiz"
@@ -120,6 +121,7 @@ export default function Register() {
                                 name="password"
                                 type="password"
                                 placeholder="Parol"
+                                autoComplete="current-password"
                                 value={userRegistration.password}
                                 onChange={handleChange}
                             />
@@ -132,6 +134,7 @@ export default function Register() {
                                 id="reEnterPassword"
                                 name="reEnterPassword"
                                 type="password"
+                                autoComplete="current-password"
                                 placeholder="Parolni qayta kiriting"
                                 value={userRegistration.reEnterPassword}
                                 onChange={handleChange}

@@ -80,6 +80,7 @@ export default function Login() {
                                 id="password"
                                 name="password"
                                 type="password"
+                                autoComplete="current-password"
                                 placeholder="Parol"
                                 value={userCredentials.password}
                                 onChange={handleChange}

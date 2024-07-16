@@ -23,7 +23,10 @@ export default function VideoCard({ video }: VideoCardProps) {
 
     const setLastViewedVideos = async () => {
         navigate(`/player/${video.video_youtube_id}`);
-        await baseUrlAxios.post('auth/set_my_views', { userId: userData._id, videoId: video._id });
+        const a = await baseUrlAxios.post('video/set_my_views', { userId: userData._id, videoId: video._id });
+
+        console.log(a);
+        
     };
 
     return (
@@ -32,7 +35,7 @@ export default function VideoCard({ video }: VideoCardProps) {
             <h1 className="mt-[5px] text-sm font-semibold line-clamp-1">{video.video_name}</h1>
             <div className="flex justify-between mt-[3px]">
                 <div className="flex items-center gap-2">
-                    <span className="text-xs">{video.video_likes} marta ko'rishlar</span>
+                    <span className="text-xs">{video.video_views} marta ko'rishlar</span>
                     <span className="text-xs">{video.updatedAt}</span>
                 </div>
             </div>
