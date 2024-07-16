@@ -31,7 +31,7 @@ export default function LastViewed({ lastViewedVideosDataAll }: LastViewedProps)
           <div className='flex flex-col gap-y-[20px]'>
             {lastViewedVideosDataAll?.length ? lastViewedVideosDataAll.map(video => (
               <SwiperSlide key={video._id}>
-                <VideoCard video={video} key={video._id} />
+                <VideoCard video={video} key={video._id} isSwiper={true}/>
               </SwiperSlide>
             )) :
               <div className=' bg-slate-100 py-10'>

@@ -58,7 +58,10 @@ export const postCheckUserToken = createAsyncThunk<
     } catch (error: unknown) {
       console.log(error);
       localStorage.removeItem('verification');
-      navigate('/register');
+
+      if (window.location.pathname !== '/register' && window.location.pathname !== '/login') {
+        navigate('/register');
+      }
       return rejectWithValue('An error occurred while verifying the user');
     }
   }

@@ -61,9 +61,9 @@ export default function Profile() {
         <div className="w-full h-full">
           <div className='max-w-[450px] mx-auto px-3 mt-5'>
             <div className='flex items-center gap-5 mb-8'>
-              <img width={80} height={80} src={profile} alt="Profile image" />
+              <img width={100} height={100} src={profile} alt="Profile image" />
               <div>
-                <h2 className='text-lg font-bold'><span className='font-medium'>Salom</span> {userData.username}</h2>
+                <h2 className='text-lg font-bold'> {userData.username}</h2>
                 <p className='font-bold'>{userData.lastname}</p>
               </div>
             </div>
@@ -71,12 +71,12 @@ export default function Profile() {
             {userData.role === "ADMIN" && <button className='py-2 w-full bg-[#202020] text-[#fff] mb-8 rounded-lg' onClick={() => navigate("/admin")}>Adminga o'tish</button>}
 
             <div className='mb-8'>
-              <h1 className='text-xl font-bold mb-3'>Oxirgi ko'rilgan videolar </h1>
+              <h2 className='text-xl font-bold mb-3'>Oxirgi ko'rilgan videolar </h2>
               <LastViewed lastViewedVideosDataAll={lastViewedVideosDataAll} />
             </div>
 
             <div>
-              <h1 className='text-xl font-bold mb-3'>Like bosilgan videolar videolar </h1>
+              <h2 className='text-xl font-bold mb-3'>Like bosilgan videolar videolar </h2>
               <LikedVideos likedVideos={likedVideos} />
             </div>
           </div>

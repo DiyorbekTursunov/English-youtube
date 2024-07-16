@@ -1,4 +1,3 @@
-import Navbar from "../components/ui_elements/navbar";
 import Adversizement from "../components/ui_elements/adversizement";
 import Videos from "../components/ui_elements/videos";
 import MenuBar from "../components/ui_elements/menu_bar";
@@ -52,8 +51,7 @@ export default function Home() {
                     <Loader />
                 ) : (
                     <div className="w-full h-full bg-[#F0EEED]">
-                        <div className='max-w-[500px] mx-auto px-3 pb-20'>
-                            <Navbar />
+                        <div className='max-w-[500px] mx-auto pb-20'>
                             <Adversizement />
                             <Videos allVideos={allVideos} />
                             {/* <Videos allVideos={allVideos} /> */}

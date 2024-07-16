@@ -31,7 +31,7 @@ export default function LikedVideos({ likedVideos }: likedVideosProps) {
           <div className='flex flex-col gap-y-[20px]'>
             {likedVideos?.length ? likedVideos.map(video => (
               <SwiperSlide key={video._id}>
-                <VideoCard video={video} key={video._id} />
+                <VideoCard video={video} key={video._id} isSwiper={true} />
               </SwiperSlide>
             )) :
               <div className=' bg-slate-100 py-10'>

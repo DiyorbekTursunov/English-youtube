@@ -20,7 +20,7 @@ export default function SuggestedVideo({ allvideoData }: SuggestedVideoProps) {
       <div className="flex flex-col gap-[25px] px-3 mt-[30px] pb-[550px]">
         {allvideoData && allvideoData.map((video) => (
           <div onClick={() => navigateTo(video.video_youtube_id)} key={video._id}>
-            <img src={video.video_img_url} alt="Video Thumnail" className="w-full h-[255px] rounded-[5px]" />
+            <img src={video.video_img_url} alt="Video Thumnail" className="video_thumbnail_is_swiper w-full h-[255px] rounded-[5px]" />
             <h2 className="font-semibold">{video.video_name}</h2>
             <div className="flex items-center gap-2">
               <span>{video.video_views}  marta ko'rishlar</span>

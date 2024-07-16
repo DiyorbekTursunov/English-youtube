@@ -59,7 +59,7 @@ export default function MenuBar() {
 
 
     return (
-        <div className="bg-[#ffffff] w-full fixed bottom-0 rounded-b-2xl shadow-lg">
+        <div className="bg-[#ffffff] w-full fixed bottom-0 rounded-t-2xl shadow-lg">
             <div className="max-w-[500px] mx-auto px-3 py-[23px]">
                 <div className="flex justify-between ">
                     {menuBarData.map(data => (
