@@ -14,11 +14,9 @@ export default function Home() {
     const [allVideos, setAllVideos] = useState<VideoType[]>([]);
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
-    const [loading, setloading] = useState(true)
 
-    console.log(allVideos);
-
-    useSelector((state: RootState) => state.checkUser);
+    
+    const { loading } = useSelector((state: RootState) => state.checkUser);
 
     useEffect(() => {
         // Fetch all videos
@@ -31,7 +29,6 @@ export default function Home() {
             } catch (error) {
                 console.error("Error fetching videos", error);
             }
-            setloading(false)
         };
         getAllVideosFun();
 
@@ -43,14 +40,14 @@ export default function Home() {
         verifyToken()
 
     }, [dispatch, navigate]);
-
+    
     return (
         <>
             {
                 loading ? (
                     <Loader />
                 ) : (
-                    <div className="w-full h-full bg-[#F0EEED]">
+                    <div className="w-full h-full bg-[#F0EEED] pt-1">
                         <div className='max-w-[500px] mx-auto pb-20'>
                             <Adversizement />
                             <Videos allVideos={allVideos} />

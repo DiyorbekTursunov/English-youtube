@@ -1,5 +1,6 @@
 import VideoCard from './video-card'
 import { VideoType } from '../../lib/types/video_type'
+import { useEffect, useState } from 'react';
 // import { videosData } from '../../db/videos'
 
 interface VideoPropsType {
@@ -8,6 +9,38 @@ interface VideoPropsType {
 
 
 export default function Videos({ allVideos }: VideoPropsType) {
+    const [isLoadingData, setIsLoadingData] = useState(false)
+
+    const fetchMoreData = () => {
+        console.log('Fetching more data');
+        setIsLoadingData(true)                
+        // Fetch the data and update the state
+    };
+
+
+    // Add the event listener when the component mounts
+
+    useEffect(() => {
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => window.removeEventListener('scroll', handleScroll);
+
+    }, []);
+
+
+    // Function to handle the scroll event
+
+    const handleScroll = () => {
+
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+
+            fetchMoreData();
+
+        }
+
+    };
+
 
 
     return (
@@ -22,6 +55,7 @@ export default function Videos({ allVideos }: VideoPropsType) {
                     </div>
                 }
             </div>
+            {isLoadingData && <h1>Lading</h1>}
         </div>
     )
 }

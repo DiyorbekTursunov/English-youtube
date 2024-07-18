@@ -49,7 +49,7 @@ export default function MenuBar() {
         if (menuIsActive.activeId === "1") {
             navigate("/")
         } else if (menuIsActive.activeId === "2") {
-            navigate("/english")
+            navigate("/category")
         } else if (menuIsActive.activeId === "3") {
             navigate("/cartoon")
         } else if (menuIsActive.activeId === "4") {
@@ -59,9 +59,9 @@ export default function MenuBar() {
 
 
     return (
-        <div className="bg-[#ffffff] w-full fixed bottom-0 rounded-t-2xl shadow-lg">
+        <div className="bg-[#ffffff] w-full fixed z-20 bottom-0 rounded-t-2xl shadow-lg">
             <div className="max-w-[500px] mx-auto px-3 py-[23px]">
-                <div className="flex justify-between ">
+                <div className="flex justify-evenly gap-10">
                     {menuBarData.map(data => (
                         <img key={data.id} src={data.icon} alt="" className={`opacity-80 ${menuIsActive.activeId === data.id && 'w-[30px] fill-slate-700 opacity-100'}`} onClick={() => handleMenuClick(data.id)} />
                     ))}

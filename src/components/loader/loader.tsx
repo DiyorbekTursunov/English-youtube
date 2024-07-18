@@ -1,7 +1,7 @@
 
 export default function Loader() {
     return (
-        <div className='absolute w-full h-full bg-black top-0 left-0 flex justify-center items-center'>
+        <div className='absolute w-full h-full bg-black top-0 left-0 flex justify-center items-center z-50'>
             <svg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#fff">
                 <g fill="none" fillRule="evenodd">
                     <g transform="translate(1 1)" strokeWidth="2">

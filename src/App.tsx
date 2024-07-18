@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from './app/store';
 import { useEffect } from 'react';
 import { postCheckUserToken } from './features/auth_slice/checkUserIsLogin';
+import Category from './pages/category';
 
 
 
@@ -33,6 +34,7 @@ function App() {
                 <Route path='/register' element={<Register />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/profile' element={<Profile />} />
+                <Route path='/category' element={<Category />} />
                 {userData.role === 'ADMIN' && <Route path='/admin' element={<Admin loading={loading} />} />}
             </Routes>
         </>

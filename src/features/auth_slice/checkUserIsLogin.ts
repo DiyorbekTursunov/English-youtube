@@ -42,7 +42,6 @@ export const postCheckUserToken = createAsyncThunk<
       const token = JSON.parse(verification);
 
       const response = await baseUrlAxios.post('/auth/check', { verification: token });
-      console.log(response);
 
       if (response.status === 200) {
         localStorage.setItem('verification', JSON.stringify(response.data.user.verification));
