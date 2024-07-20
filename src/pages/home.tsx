@@ -12,6 +12,8 @@ import Loader from "@/components/loader/loader";
 
 export default function Home() {
     const [allVideos, setAllVideos] = useState<VideoType[]>([]);
+    console.log(allVideos.length);
+    
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
 
