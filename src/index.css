@@ -205,47 +205,10 @@
 
   @media (max-width: 470px) {
     .video_thumbnail_is_swiper{
-      height: 200px;
+      height: 80px;
     }
   }
 
-
-  @media (max-width: 430px) {
-    .video_thumbnail_is_swiper{
-      height: 190px;
-    }
-  }
-
-
-  @media (max-width: 420px) {
-    .video_thumbnail_is_swiper{
-      height: 180px;
-    }
-  }
-
-
-
-  @media (max-width: 410px) {
-    .video_thumbnail_is_swiper{
-      height: 170px;
-    }
-  }
-
-
-
-
-  @media (max-width: 400px) {
-    .video_thumbnail_is_swiper{
-      height: 160px;
-    }
-  }
-
-
-  @media (max-width: 370px) {
-    .video_thumbnail_is_swiper{
-      height: 150px;
-    }
-  }
 
 
 

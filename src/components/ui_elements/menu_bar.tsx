@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import menu_icon_1 from "../images/bottom_menu_bar/menu_1.svg"
 import menu_icon_2 from "../images/bottom_menu_bar/menu_2.svg"
-import menu_icon_3 from "../images/bottom_menu_bar/menu_3.svg"
 import menu_icon_4 from "../images/bottom_menu_bar/menu_4.svg"
 import { useNavigate } from "react-router-dom"
 
@@ -32,10 +31,6 @@ export default function MenuBar() {
             icon: menu_icon_2
         },
         {
-            id: '3',
-            icon: menu_icon_3
-        },
-        {
             id: '4',
             icon: menu_icon_4
         },
@@ -50,8 +45,6 @@ export default function MenuBar() {
             navigate("/")
         } else if (menuIsActive.activeId === "2") {
             navigate("/category")
-        } else if (menuIsActive.activeId === "3") {
-            navigate("/cartoon")
         } else if (menuIsActive.activeId === "4") {
             navigate("/profile")
         }

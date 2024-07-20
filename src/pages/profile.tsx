@@ -4,7 +4,6 @@ import { RootState, AppDispatch } from '@/app/store'; // Ensure the path is corr
 import { postCheckUserToken } from '@/features/auth_slice/checkUserIsLogin'; // Ensure the path is correct
 import { useNavigate } from 'react-router-dom';
 import Loader from "@/components/loader/loader";
-import profile from '@/components/images/profile/profile.png'
 import MenuBar from '@/components/ui_elements/menu_bar';
 import LastViewed from '@/components/profile/last_viewed';
 import LikedVideos from '@/components/profile/liked_videos';
@@ -17,6 +16,8 @@ export default function Profile() {
   const navigate = useNavigate();
   const [allvideoData, setAllvideoData] = useState<VideoType[] | null>(null)
   const { loading, userData } = useSelector((state: RootState) => state.checkUser);
+  const [settingsIsOpen, setsettingsIsOpen] = useState(false)
+  const [confirmModalIsOpen, setconfirmModalIsOpen] = useState(false)
 
 
   useEffect(() => {
@@ -53,6 +54,13 @@ export default function Profile() {
   }, [dispatch, navigate]);
 
 
+
+  const logOut = () => {
+    window.location.reload();
+    localStorage.removeItem('verification');
+    navigate('/login');
+  }
+
   return (
     loading ?
       <Loader /> :
@@ -60,28 +68,64 @@ export default function Profile() {
       (<>
         <div className="w-full h-full">
           <div className='max-w-[450px] mx-auto px-3 mt-5'>
-            <div className='flex items-center gap-5 mb-8'>
-              <img width={100} height={100} src={profile} alt="Profile image" />
-              <div>
-                <h2 className='text-lg font-bold'> {userData.username}</h2>
-                <p className='font-bold'>{userData.lastname}</p>
+
+            <div className='flex w-full justify-between items-start'>
+              <div className='flex items-center gap-3 mb-8'>
+                <div className='w-[70px] h-[70px] flex justify-center items-center bg-[#135e26] text-white rounded-[50%]'>
+                  <h2 className='text-4xl font-medium'> {userData.username.slice(0, 1)}</h2>
+                </div>
+                <div>
+                  <h2 className='text-lg font-bold'> {userData.username}</h2>
+                  <p className='font-bold'>{userData.lastname}</p>
+                </div>
+              </div>
+
+
+              <button className='pr-2' onClick={() => setsettingsIsOpen(!settingsIsOpen)}>
+                <svg fill="#000000" height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 54 54" xmlSpace="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M51.22,21h-5.052c-0.812,0-1.481-0.447-1.792-1.197s-0.153-1.54,0.42-2.114l3.572-3.571 c0.525-0.525,0.814-1.224,0.814-1.966c0-0.743-0.289-1.441-0.814-1.967l-4.553-4.553c-1.05-1.05-2.881-1.052-3.933,0l-3.571,3.571 c-0.574,0.573-1.366,0.733-2.114,0.421C33.447,9.313,33,8.644,33,7.832V2.78C33,1.247,31.753,0,30.22,0H23.78 C22.247,0,21,1.247,21,2.78v5.052c0,0.812-0.447,1.481-1.197,1.792c-0.748,0.313-1.54,0.152-2.114-0.421l-3.571-3.571 c-1.052-1.052-2.883-1.05-3.933,0l-4.553,4.553c-0.525,0.525-0.814,1.224-0.814,1.967c0,0.742,0.289,1.44,0.814,1.966l3.572,3.571 c0.573,0.574,0.73,1.364,0.42,2.114S8.644,21,7.832,21H2.78C1.247,21,0,22.247,0,23.78v6.439C0,31.753,1.247,33,2.78,33h5.052 c0.812,0,1.481,0.447,1.792,1.197s0.153,1.54-0.42,2.114l-3.572,3.571c-0.525,0.525-0.814,1.224-0.814,1.966 c0,0.743,0.289,1.441,0.814,1.967l4.553,4.553c1.051,1.051,2.881,1.053,3.933,0l3.571-3.572c0.574-0.573,1.363-0.731,2.114-0.42 c0.75,0.311,1.197,0.98,1.197,1.792v5.052c0,1.533,1.247,2.78,2.78,2.78h6.439c1.533,0,2.78-1.247,2.78-2.78v-5.052 c0-0.812,0.447-1.481,1.197-1.792c0.751-0.312,1.54-0.153,2.114,0.42l3.571,3.572c1.052,1.052,2.883,1.05,3.933,0l4.553-4.553 c0.525-0.525,0.814-1.224,0.814-1.967c0-0.742-0.289-1.44-0.814-1.966l-3.572-3.571c-0.573-0.574-0.73-1.364-0.42-2.114 S45.356,33,46.168,33h5.052c1.533,0,2.78-1.247,2.78-2.78V23.78C54,22.247,52.753,21,51.22,21z M52,30.22 C52,30.65,51.65,31,51.22,31h-5.052c-1.624,0-3.019,0.932-3.64,2.432c-0.622,1.5-0.295,3.146,0.854,4.294l3.572,3.571 c0.305,0.305,0.305,0.8,0,1.104l-4.553,4.553c-0.304,0.304-0.799,0.306-1.104,0l-3.571-3.572c-1.149-1.149-2.794-1.474-4.294-0.854 c-1.5,0.621-2.432,2.016-2.432,3.64v5.052C31,51.65,30.65,52,30.22,52H23.78C23.35,52,23,51.65,23,51.22v-5.052 c0-1.624-0.932-3.019-2.432-3.64c-0.503-0.209-1.021-0.311-1.533-0.311c-1.014,0-1.997,0.4-2.761,1.164l-3.571,3.572 c-0.306,0.306-0.801,0.304-1.104,0l-4.553-4.553c-0.305-0.305-0.305-0.8,0-1.104l3.572-3.571c1.148-1.148,1.476-2.794,0.854-4.294 C10.851,31.932,9.456,31,7.832,31H2.78C2.35,31,2,30.65,2,30.22V23.78C2,23.35,2.35,23,2.78,23h5.052 c1.624,0,3.019-0.932,3.64-2.432c0.622-1.5,0.295-3.146-0.854-4.294l-3.572-3.571c-0.305-0.305-0.305-0.8,0-1.104l4.553-4.553 c0.304-0.305,0.799-0.305,1.104,0l3.571,3.571c1.147,1.147,2.792,1.476,4.294,0.854C22.068,10.851,23,9.456,23,7.832V2.78 C23,2.35,23.35,2,23.78,2h6.439C30.65,2,31,2.35,31,2.78v5.052c0,1.624,0.932,3.019,2.432,3.64 c1.502,0.622,3.146,0.294,4.294-0.854l3.571-3.571c0.306-0.305,0.801-0.305,1.104,0l4.553,4.553c0.305,0.305,0.305,0.8,0,1.104 l-3.572,3.571c-1.148,1.148-1.476,2.794-0.854,4.294c0.621,1.5,2.016,2.432,3.64,2.432h5.052C51.65,23,52,23.35,52,23.78V30.22z"></path> <path d="M27,18c-4.963,0-9,4.037-9,9s4.037,9,9,9s9-4.037,9-9S31.963,18,27,18z M27,34c-3.859,0-7-3.141-7-7s3.141-7,7-7 s7,3.141,7,7S30.859,34,27,34z"></path> </g> </g></svg>
+              </button>
+
+            </div>
+
+
+            {settingsIsOpen && <div className='w-full h-screen fixed z-40 bg-black opacity-40 top-0  left-0' onClick={() => { setsettingsIsOpen(false), setconfirmModalIsOpen(false) }}></div>}
+
+            <div className='max-w-[450px] mx-auto relative'>
+              <div className='w-full h-full bg-white   z-50'>
+                <div className={`${settingsIsOpen ? `scale-100 ${confirmModalIsOpen ? "" : "right-10"}` : "scale-0 -right-36"} ${confirmModalIsOpen ? " w-full" : ""} transition-all  z-50 top-10 flex flex-col absolute items-start gap-y-3 shadow-xl bg-white p-4 rounded-lg`}>
+                  {confirmModalIsOpen || <button className='py-3 bg-slate-100 px-3 text-red-500 font-bold text-sm rounded-lg w-full' onClick={() => setconfirmModalIsOpen(true)}>Hisobdan chiqish</button>}
+
+                  {confirmModalIsOpen &&
+                    <div className={`w-full text-center py-4`}>
+                      <h2 className='font-bold mb-10'>Hisobdan chiqishga rozimisiz</h2>
+
+                      <button className='py-3 bg-slate-100 px-3 text-red-500 font-bold text-sm rounded-lg w-full' onClick={() => logOut()}>Hisobdan chiqish</button>
+                    </div>
+                  }
+                </div>
               </div>
             </div>
 
             {userData.role === "ADMIN" && <button className='py-2 w-full bg-[#202020] text-[#fff] mb-8 rounded-lg' onClick={() => navigate("/admin")}>Adminga o'tish</button>}
 
             <div className='mb-8'>
-              <h2 className='text-xl font-bold mb-3'>Oxirgi ko'rilgan videolar </h2>
+              <div className='w-full flex justify-between items-center mb-3'>
+                <h2 className='text-lg font-bold'>Tomosha tarixi</h2>
+                {/* <button className='py-1 px-3 border-[1px] rounded-3xl text-sm font-bold'>Hammasi</button> */}
+              </div>
               <LastViewed lastViewedVideosDataAll={lastViewedVideosDataAll} />
             </div>
 
             <div>
-              <h2 className='text-xl font-bold mb-3'>Like bosilgan videolar videolar </h2>
+              <div className='w-full flex justify-between items-center mb-3'>
+                <h2 className='text-lg font-bold'>Pleylistlar</h2>
+                {/* <button className='py-1 px-3 border-[1px] rounded-3xl text-sm font-bold'>Hammasi</button> */}
+              </div>
               <LikedVideos likedVideos={likedVideos} />
             </div>
           </div>
         </div>
-        <MenuBar /> 
+        <MenuBar />
       </>
       )
   );

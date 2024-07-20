@@ -14,6 +14,24 @@ import Loader from "@/components/loader/loader";
 
 // import { videosData } from "../db/videos";
 // import MenuBar from "../components/ui_elements/menu_bar";
+// Function to shuffle an array
+
+
+function shuffleArray<T>(array: T[]): T[] {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+
+// Function to set a random video
+function setRandomVideo(videoDataArray: VideoType[], setVideoDataFun: (video: VideoType) => void): void {
+    const shuffledVideos = shuffleArray(videoDataArray);
+    const randomVideo = shuffledVideos[0];
+    setVideoDataFun(randomVideo);
+}
 
 export default function PlayVideo() {
     const { slug } = useParams()
@@ -60,15 +78,23 @@ export default function PlayVideo() {
 
 
     useEffect(() => {
+        if (!slug || !allvideoData) return;
 
-        const videoData = allvideoData && allvideoData.find(video => video.video_youtube_id === slug)
+        const videoData = allvideoData.find(video => video.video_youtube_id === slug);
 
         if (videoData) {
-            setVideoData(videoData)
-            setlikeCount(Number(videoData.video_likes))
-        }
+            // Function to handle setting the video data
+            const setVideoDataFun = (video: VideoType): void => {
+                console.log("Random Video Selected:", video);
+            };
 
-    }, [slug, allvideoData])
+            // Call the function to set a random video
+            setRandomVideo(allvideoData, setVideoDataFun);
+
+            setVideoData(videoData)
+            setlikeCount(Number(videoData.video_likes));
+        }
+    }, [slug, allvideoData]);
 
 
     const setLike = () => {

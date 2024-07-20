@@ -22,13 +22,13 @@ export default function LastViewed({ lastViewedVideosDataAll }: LastViewedProps)
   return (
     <div className='max-w-[425px] mx-auto'>
       <Swiper
-        spaceBetween={50}
-        slidesPerView={1.2}
+        spaceBetween={10}
+        slidesPerView={2.5}
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
       >
         <div className='mb-[24px]'>
-          <div className='flex flex-col gap-y-[20px]'>
+          <div className=''>
             {lastViewedVideosDataAll?.length ? lastViewedVideosDataAll.map(video => (
               <SwiperSlide key={video._id}>
                 <VideoCard video={video} key={video._id} isSwiper={true}/>

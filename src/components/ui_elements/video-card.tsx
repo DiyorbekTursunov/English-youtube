@@ -32,14 +32,28 @@ export default function VideoCard({ video, isSwiper }: VideoCardProps) {
 
     return (
         <div onClick={() => setLastViewedVideos()}>
-            <img src={video.video_img_url} alt="Video Thumbnail" className={`${isSwiper ? "video_thumbnail_is_swiper w-full h-[210px]" : "video_thumbnail w-full h-[290px]"}`} />
-            <h1 className="mt-[5px] text-sm font-semibold line-clamp-1 ml-3">{video.video_name}</h1>
-            <div className="flex justify-between mt-[3px] ml-3">
-                <div className="flex items-center gap-2">
-                    <span className="text-xs">{video.video_views} marta ko'rishlar</span>
-                    <span className="text-xs">{video.updatedAt}</span>
-                </div>
-            </div>
+            <img src={video.video_img_url} alt="Video Thumbnail" className={`${isSwiper ? "video_thumbnail_is_swiper w-full h-[90px]" : "video_thumbnail w-full h-[290px]"}`} />
+            {isSwiper ?
+                <>
+                    <h1 className="mt-[5px] text-xs font-semibold line-clamp-2">{video.video_name}</h1>
+                    <div className="flex justify-between mt-[3px] ml-3">
+                        {/* <div className="flex items-center gap-2">
+                            <span className="text-xs">{video.video_views} marta ko'rishlar</span>
+                            <span className="text-xs">{video.updatedAt}</span>
+                        </div> */}
+                    </div>
+                </>
+                :
+                <>
+                    <h1 className="mt-[5px] text-sm font-semibold line-clamp-1 ml-3">{video.video_name}</h1>
+                    <div className="flex justify-between mt-[3px] ml-3">
+                        <div className="flex items-center gap-2">
+                            <span className="text-xs">{video.video_views} marta ko'rishlar</span>
+                            <span className="text-xs">{video.updatedAt}</span>
+                        </div>
+                    </div>
+                </>
+            }
         </div>
     );
 }

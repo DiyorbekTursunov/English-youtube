@@ -22,8 +22,8 @@ export default function LikedVideos({ likedVideos }: likedVideosProps) {
   return (
     <div className='max-w-[425px] mx-auto'>
       <Swiper
-        spaceBetween={50}
-        slidesPerView={1.2}
+        spaceBetween={10}
+        slidesPerView={2.5}
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
       >
